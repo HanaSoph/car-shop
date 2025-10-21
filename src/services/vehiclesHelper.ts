@@ -1,7 +1,5 @@
 import type { Vehicle } from '../types/vehicle'
-import { fetchVehicles, fetchVehicleById } from '../services/mockApi'
-
-// sort by: price, year, mileage in here
+import { fetchVehicles, fetchVehicleById } from '../api/mockApi'
 
 export async function getVehicles(): Promise<Vehicle[]> {
   return await fetchVehicles()

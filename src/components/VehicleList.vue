@@ -10,24 +10,29 @@ onMounted(() => store.fetchVehicles())
 <template>
   <div class="sort-group">
     <label for="sort">Sort by:</label>
-    <select name="sort" id="sort">
-      <option>Price (low to high)</option>
-      <option>Price (high to low)</option>
-      <option>Mileage (low to high)</option>
-      <option>Mileage (low to high)</option>
-      <option>Age (newest)</option>
-      <option>Age (oldest)</option>
+    <select v-model="store.sortOption" id="sort">
+      <option value="price-asc">Price (low to high)</option>
+      <option value="price-desc">Price (high to low)</option>
+      <option value="mileage-asc">Mileage (low to high)</option>
+      <option value="mileage-desc">Mileage (high to low)</option>
+      <option value="age-newest">Age (newest)</option>
+      <option value="age-oldest">Age (oldest)</option>
     </select>
   </div>
 
   <ul>
-    <li v-for="vehicle in store.vehicles" :key="vehicle.id">
+    <li v-for="vehicle in store.sortedVehicles" :key="vehicle.id">
       <div class="card">
-        <h2>{{ vehicle.make }} {{ vehicle.model }}</h2>
-        <p>{{ vehicle.year }}</p>
-        <p>{{ vehicle.colour }}</p>
-        <p>{{ vehicle.mileage }}</p>
-        <p>{{ vehicle.price }}</p>
+        <div class="card-content">
+          <h2>{{ vehicle.make }} {{ vehicle.model }}</h2>
+          <div class="tag-group">
+            <div class="tag">{{ vehicle.year }}</div>
+            <div class="tag">{{ vehicle.colour }}</div>
+            <div class="tag">{{ vehicle.mileage.toLocaleString() }} miles</div>
+          </div>
+
+          <p class="price">£{{ vehicle.price.toLocaleString() }}</p>
+        </div>
       </div>
     </li>
   </ul>
@@ -39,6 +44,7 @@ ul {
   padding: unset;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .sort-group {
@@ -48,16 +54,40 @@ ul {
 
 .card {
   background-color: #e9edf1;
-  width: 280px;
+  width: 350px;
   height: 350px;
   margin: 10px;
+  padding: 30px;
   border-radius: 6px;
+  display: flex;
+  align-items: flex-end;
 
-  /* img {
-    position: absolute;
-    width: 280px;
-    height: auto;
-    border-radius: 6px;
-  } */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .tag {
+        background-color: #001842;
+        color: white;
+        border-radius: 30px;
+        padding: 5px 10px;
+        min-width: 70px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .price {
+      font-size: 35px;
+      font-weight: 500;
+      color: #414a54;
+    }
+  }
 }
 </style>
