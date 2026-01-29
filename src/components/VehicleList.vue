@@ -19,7 +19,7 @@ onMounted(() => store.fetchVehicles())
       <option value="age-oldest">Age (oldest)</option>
     </select>
   </div>
-
+  <div v-if="store.loading" class="loading">Loading...</div>
   <ul>
     <li v-for="vehicle in store.sortedVehicles" :key="vehicle.id">
       <div class="card">
@@ -45,6 +45,11 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
 }
 
 .sort-group {
