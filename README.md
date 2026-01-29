@@ -1,21 +1,6 @@
-# Codeweaver tech test - Hannah Beardmore
+# Vehicle Inventory Project
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+This project implements a vehicle listing feature for an automotive web application based off my own design. The application displays a list of retailer's available vehicles and allows users to filter and sort these vehicles.
 
 ## Project Setup
 
@@ -40,3 +25,15 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Core Features
+
+- Single Page App using Vue 3 (Composition API), TypeScript, HTML and SCSS
+- Mobile first design and responsive up to larger screens
+- Vehicle ordering based on price, mileage or age
+- Simulates API calls to mimic asynchronous behaviour and provide mock data
+
+## Future Enhancements
+
+- View the details of a single vehicle on a separate page
+- Display a representative finance calculation on the single vehicle view page
