@@ -6,7 +6,8 @@
     "price": 23450,
     "mileage": 15000,
     "colour": "White",
-    "id": "veh001"
+    "id": "veh001",
+    "img": "/images/honda.jpeg"
   },
   {
     "make": "Honda",

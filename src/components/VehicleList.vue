@@ -23,6 +23,16 @@ onMounted(() => store.fetchVehicles())
   <ul>
     <li v-for="vehicle in store.sortedVehicles" :key="vehicle.id">
       <div class="card">
+        <div class="card-image">
+          <img
+            :src="vehicle.img ?? '/images/car.png'"
+            :alt="
+              vehicle.img
+                ? `Image of a ${vehicle.make} ${vehicle.model}`
+                : 'Placeholder image of a graphic car'
+            "
+          />
+        </div>
         <div class="card-content">
           <h2>{{ vehicle.make }} {{ vehicle.model }}</h2>
           <div class="tag-group">
@@ -45,6 +55,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 .loading {
@@ -59,18 +70,35 @@ ul {
 
 .card {
   background-color: #e9edf1;
-  width: 350px;
-  height: 350px;
+  height: 400px;
   margin: 10px;
-  padding: 30px;
   border-radius: 6px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+
+  .card-image {
+    position: relative;
+    top: 0px;
+    left: 0px;
+
+    img {
+      max-width: 100%;
+      min-height: 100%;
+      width: 335px;
+      height: 200px;
+      object-fit: cover;
+      object-position: 50% 50%;
+      border-radius: 6px 6px 0px 0px;
+    }
+  }
 
   .card-content {
     display: flex;
-    flex-direction: column;
+    padding: 30px;
+
     gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
 
     .tag-group {
       display: flex;
