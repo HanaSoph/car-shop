@@ -20,7 +20,7 @@ onMounted(() => store.fetchVehicles())
     </select>
   </div>
   <div v-if="store.loading" class="loading">Loading...</div>
-  <ul>
+  <ul class="card-list">
     <li v-for="vehicle in store.sortedVehicles" :key="vehicle.id">
       <div class="card">
         <div class="card-image">
@@ -34,7 +34,7 @@ onMounted(() => store.fetchVehicles())
           />
         </div>
         <div class="card-content">
-          <h2>{{ vehicle.make }} {{ vehicle.model }}</h2>
+          <h3>{{ vehicle.make }} {{ vehicle.model }}</h3>
           <div class="tag-group">
             <div class="tag">{{ vehicle.year }}</div>
             <div class="tag">{{ vehicle.colour }}</div>
@@ -49,15 +49,6 @@ onMounted(() => store.fetchVehicles())
 </template>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  padding: unset;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
 .loading {
   padding: 2rem;
   text-align: center;
@@ -68,59 +59,78 @@ ul {
   gap: 10px;
 }
 
-.card {
-  background-color: #e9edf1;
-  height: 400px;
-  margin: 10px;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
+.card-list {
+  list-style-type: none;
+  padding: unset;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+  gap: 30px;
 
-  .card-image {
-    position: relative;
-    top: 0px;
-    left: 0px;
-
-    img {
-      max-width: 100%;
-      min-height: 100%;
-      width: 335px;
-      height: 200px;
-      object-fit: cover;
-      object-position: 50% 50%;
-      border-radius: 6px 6px 0px 0px;
-    }
-  }
-
-  .card-content {
+  .card {
+    background-color: #e9edf1;
+    border-radius: 15px;
     display: flex;
-    padding: 30px;
-
-    gap: 10px;
     flex-direction: column;
-    align-items: flex-start;
 
-    .tag-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+    .card-image {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      height: 250px;
+      min-width: 280px;
 
-      .tag {
-        background-color: #001842;
-        color: white;
-        border-radius: 30px;
-        padding: 5px 10px;
-        min-width: 70px;
-        display: flex;
-        justify-content: center;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        border-radius: 15px 15px 0px 0px;
       }
     }
 
-    .price {
-      font-size: 35px;
-      font-weight: 500;
-      color: #414a54;
+    .card-content {
+      font-size: 14px;
+      display: flex;
+      padding: 30px;
+      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+
+      h3 {
+        min-height: 52px;
+        display: flex;
+        align-items: center;
+      }
+
+      .tag-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        .tag {
+          background-color: #001842;
+          color: white;
+          font-size: 11px;
+          border-radius: 30px;
+          padding: 5px 12px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .price {
+        font-size: 25px;
+        font-weight: 500;
+        color: #414a54;
+      }
     }
+  }
+}
+
+@media (max-width: 710px) {
+  .card-list {
+    grid-template-columns: 1fr;
   }
 }
 </style>
